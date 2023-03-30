@@ -1,11 +1,8 @@
-import { useState, useEffect } from 'react';
-
-export const ProductList = ({ listProducts, addCart }) => {
-  //   console.log(listProducts);
+export const FilteredProductList = ({ filteredProducts }) => {
+  console.log(filteredProducts);
   return (
     <ul>
-      <h2>Produtos</h2>
-      {listProducts.map((product) => (
+      {filteredProducts.map((product) => (
         <li key={product.id}>
           <h2 className="heading_1">{product.name}</h2>
           <p>{product.category}</p>
