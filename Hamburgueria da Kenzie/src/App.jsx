@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Header } from './components/Header/Header';
+import { Header } from './components/Header/index';
 import { api } from './services/api';
-import { ProductList } from './components/ProductsList/ProducList';
-import { Cart } from './components/Cart/Cart';
-import { CartTotal } from './components/CartTotal/CartTotal';
+import { Container } from './components/Container';
+import { ProductList } from './components/ProductsList/index';
 import { GlobalStyle } from './styles/global';
 import { GlobalTypography } from './styles/typography';
-import { FilteredProductList } from './components/FilteredProductsList/FilteredProductList';
+import { FilteredContainer } from './components/FilterContainer';
+import { CartContainer } from './components/CartContainer';
+import { GlobalButtons } from './styles/buttons';
 
 function App() {
   const cartItems = localStorage.getItem('@CARTITEMS');
@@ -21,9 +22,18 @@ function App() {
 
   const showProducts = (text) => {
     const newList = listProducts.filter((product) => {
+      const formatName = product.name
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      const formatCategory = product.category
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
       const condiction =
-        product.name.toLowerCase().includes(text) ||
-        product.category.toLowerCase().includes(text);
+        formatName.includes(text.trim()) ||
+        formatCategory.toLowerCase().includes(text.trim());
 
       if (condiction) {
         return product;
@@ -72,32 +82,20 @@ function App() {
     <div className="App">
       <GlobalStyle />
       <GlobalTypography />
+      <GlobalButtons />
       <Header showProducts={showProducts} />
-      <div className="container">
+      <Container>
         {filteredProducts.length === 0 ? (
           <ProductList listProducts={listProducts} addCart={addCart} />
         ) : (
-          <div className="filter__container">
-            <div className="clear">
-              <h2>
-                Resultados para:
-                {filteredProducts.length === 1
-                  ? filteredProducts[0].name
-                  : filteredProducts[0].category}{' '}
-              </h2>
-              <button onClick={() => setFilteredProducts([])}>
-                Limpar Busca
-              </button>
-            </div>
-
-            <FilteredProductList filteredProducts={filteredProducts} />
-          </div>
+          <FilteredContainer
+            filteredProducts={filteredProducts}
+            setFilteredProducts={setFilteredProducts}
+            addCart={addCart}
+          />
         )}
-        <div className="cart__container">
-          <Cart currentSale={currentSale} removeCart={removeCart} />
-          <CartTotal currentSale={currentSale} removeCart={removeCart} />
-        </div>
-      </div>
+        <CartContainer currentSale={currentSale} removeCart={removeCart} />
+      </Container>
     </div>
   );
 }

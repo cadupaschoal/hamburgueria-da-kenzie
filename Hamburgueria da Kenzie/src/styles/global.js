@@ -11,11 +11,11 @@ export const GlobalStyle = createGlobalStyle`
     --color-primary:#27AE60 ;
     --color-primary-50: #93D7AF;
     --color-secundary: #EB5757;
-
     --grey-100: #333333;
     --grey-50: #828282;
     --grey-20: #E0E0E0;
     --grey-0: #F5F5F5;
+    --white: #FFFFFF;
 
     --negative: #E60000;
     --warning: #FFCD07;
@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     --font-family: 'Inter', sans-serif;
 
     --weight-regular: 400;
+    --weight-regular-2: 500;
     --weight-semi-bold: 600;
     --weight-bold: 700;
 
@@ -34,5 +35,9 @@ export const GlobalStyle = createGlobalStyle`
     --font-size-4: 16px; 
     --font-size-5: 14px;
     --font-size-6: 12px;
+
+    --radius-1: 8px;
   }
+
+  
 `;

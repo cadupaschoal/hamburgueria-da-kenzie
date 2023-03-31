@@ -5,31 +5,46 @@ export const StyledHeader = styled.header`
   height: 140px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 14px;
   padding: 16px 14px;
+  background-color: var(--grey-0);
+
+  img {
+    width: 160px;
+    height: 37px;
+  }
 
   form {
-    border: solid 1px red;
+    border: solid 2px var(--grey-20);
+    border-radius: var(--radius-1);
+    background-color: var(--white);
     display: flex;
     justify-content: space-between;
-    padding: 0 10px 0 15px;
+    padding: 10px 10px 10px 15px;
+    width: 100%;
+    height: 60px;
 
     input {
       border: none;
+      font-family: var(--font-family);
+      font-size: var(--font-size-5);
+      color: var(--grey-50);
+      ::placeholder {
+        font-family: var(--font-family);
+        font-size: var(--font-size-5);
+        color: var(--grey-20);
+      }
+
+      :focus {
+        outline: none;
+      }
     }
 
     button {
-      height: 45px;
-      border: solid 2px black;
-      border-radius: 8px;
-      margin-left: 5px;
-      cursor: pointer;
-      padding: 0 15px;
-    }
-
-    button:hover {
-      background-color: darkgreen;
-      transition: 0.4s;
+      font-weight: var(--weight-regular-2);
+      font-size: var(--font-size-5);
+      width: 105px;
     }
   }
 `;

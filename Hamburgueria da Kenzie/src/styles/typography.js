@@ -33,7 +33,7 @@ export const GlobalTypography = createGlobalStyle`
   .headline{
     font-family: var(--font-family);
     font-size: var(--font-size-3);
-    font-weight: var(--weight-regular);
+    font-weight: var(--weight-regular-2);
   }
 
   .body__regular{
