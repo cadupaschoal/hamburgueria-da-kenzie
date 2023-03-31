@@ -32,8 +32,18 @@ function App() {
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase();
       const condiction =
-        formatName.includes(text.trim()) ||
-        formatCategory.toLowerCase().includes(text.trim());
+        formatName.includes(
+          text
+            .trim()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+        ) ||
+        formatCategory.toLowerCase().includes(
+          text
+            .trim()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+        );
 
       if (condiction) {
         return product;
