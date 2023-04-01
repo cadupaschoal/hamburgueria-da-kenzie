@@ -48,8 +48,8 @@ export const GlobalButtons = createGlobalStyle`
   .medium__green{
     width: 130px;
     heigth: 40px;
-    background-color: var(--color-primary);
     color: var(--white);
+    background-color: var(--color-primary);
     border: 2px solid var(--color-primary);
     padding: 0 20px;
     font-family: var(--font-family);
@@ -65,9 +65,9 @@ export const GlobalButtons = createGlobalStyle`
   .medium__grey{
     width: 130px;
     heigth: 40px;
-    background-color: var(--grey-100);
     color: var(--grey-50);
-    border: 2px solid var(--grey-100);
+    background-color: var(--grey-50);
+    border: 2px solid var(--grey-50);
     padding: 0 20px;
     font-family: var(--font-family);
     font-weight: var(--weight-semi-bold);
@@ -75,8 +75,9 @@ export const GlobalButtons = createGlobalStyle`
   }
 
   .medium__grey:hover{
-    background-color: var(--grey-50);
-    border: 2px solid var(--grey-50);
+    
+    background-color: var(--grey-100);
+    border: 2px solid var(--grey-100);
     color: var(--grey-20)
   }
 `;

@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
-export const StyledFilteredList = styled.ul`
-  /* border: solid 2px green; */
+export const StyledList = styled.ul`
+  width: 100%;
   padding: 15px;
   display: flex;
   overflow-x: auto;
+  overflow-y: hidden;
   gap: 20px;
+  max-width: 410px;
+  margin: 0 auto;
 
   figure {
     display: flex;
@@ -16,8 +19,6 @@ export const StyledFilteredList = styled.ul`
     background-color: var(--grey-0);
 
     img {
-      /* border: solid 1px yellowgreen; */
-      /* max-width: 240px; */
       max-height: 200px;
       object-fit: ;
     }
@@ -48,5 +49,25 @@ export const StyledFilteredList = styled.ul`
     height: 345px;
     border: solid 2px var(--grey-20);
     border-radius: var(--raidus-1);
+  }
+
+  @media (min-width: 900px) {
+    margin: 0;
+    max-width: unset;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      min-width: 250px;
+      height: 345px;
+      border: solid 2px var(--grey-20);
+      border-radius: var(--raidus-1);
+    }
+
+    li:hover {
+      border: solid 2px var(--grey-100);
+      transition: 0.4s;
+    }
   }
 `;

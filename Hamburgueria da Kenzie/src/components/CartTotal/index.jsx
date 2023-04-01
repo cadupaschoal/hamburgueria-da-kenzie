@@ -1,3 +1,5 @@
+import { StyledCartTotal } from '../../styles/cartTotal';
+
 export const CartTotal = ({ currentSale, removeCart }) => {
   const prices = currentSale.map((product) => product.price);
   const total = prices.reduce(
@@ -6,12 +8,20 @@ export const CartTotal = ({ currentSale, removeCart }) => {
   );
 
   return total === 0 ? null : (
-    <div>
-      <h3>
+    <StyledCartTotal>
+      <div className="stripe"></div>
+      <h3 className="body__semi-bold">
         Total:{' '}
-        {total.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+        <span>
+          {total.toLocaleString('pt-br', {
+            style: 'currency',
+            currency: 'BRL',
+          })}
+        </span>
       </h3>
-      <button onClick={() => removeCart(null)}>Remover todos</button>
-    </div>
+      <button className="default__grey" onClick={() => removeCart(null)}>
+        Remover todos
+      </button>
+    </StyledCartTotal>
   );
 };

@@ -1,9 +1,8 @@
-import { StyledFilteredList } from '../../styles/filteredList';
+import { StyledList } from '../../styles/list';
 
 export const FilteredProductList = ({ filteredProducts, addCart }) => {
-  console.log(filteredProducts);
   return (
-    <StyledFilteredList>
+    <StyledList>
       {filteredProducts.map((product) => (
         <li key={product.id}>
           <figure>
@@ -25,6 +24,6 @@ export const FilteredProductList = ({ filteredProducts, addCart }) => {
           </button>
         </li>
       ))}
-    </StyledFilteredList>
+    </StyledList>
   );
 };

@@ -8,6 +8,8 @@ import { GlobalTypography } from './styles/typography';
 import { FilteredContainer } from './components/FilterContainer';
 import { CartContainer } from './components/CartContainer';
 import { GlobalButtons } from './styles/buttons';
+import { Flip, ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const cartItems = localStorage.getItem('@CARTITEMS');
@@ -17,8 +19,6 @@ function App() {
   const [currentSale, setCurrenSale] = useState(
     cartItems ? JSON.parse(cartItems) : []
   );
-
-  console.log(filteredProducts);
 
   const showProducts = (text) => {
     const newList = listProducts.filter((product) => {
@@ -49,17 +49,29 @@ function App() {
         return product;
       }
     });
-    setFilteredProducts(newList);
+    if (newList.length === 0) {
+      toast.info('Nenhum item encontrado', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      toast.clearWaitingQueue();
+    } else {
+      setFilteredProducts(newList);
+    }
   };
 
   const addCart = (productId) => {
     if (currentSale.some((product) => product.id === productId)) {
-      alert('Este item já está no carrinho');
+      toast.error('Este item já está no carrinho', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     } else {
       const selectProduct = listProducts.find(
         (product) => product.id === productId
       );
       setCurrenSale([...currentSale, selectProduct]);
+      toast.success('Item adicionado ao carrinho', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     }
   };
 
@@ -67,8 +79,14 @@ function App() {
     if (producId !== null) {
       const newList = currentSale.filter((product) => product.id !== producId);
       setCurrenSale(newList);
+      toast.success('Item removido do carrinho com sucesso', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     } else {
       setCurrenSale([]);
+      toast.success('Todos os itens do carrinho foram removidos', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     }
   };
 
@@ -78,7 +96,7 @@ function App() {
         const response = await api.get('products');
         setListProducts(response.data);
       } catch (error) {
-        console.log(error);
+        toast.error(error);
       }
     };
     loadProducts();
@@ -93,6 +111,7 @@ function App() {
       <GlobalStyle />
       <GlobalTypography />
       <GlobalButtons />
+      <ToastContainer transition={Flip} autoClose={1500} limit={1} />
       <Header showProducts={showProducts} />
       <Container>
         {filteredProducts.length === 0 ? (

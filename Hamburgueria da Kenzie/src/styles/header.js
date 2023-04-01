@@ -24,6 +24,7 @@ export const StyledHeader = styled.header`
     padding: 10px 10px 10px 15px;
     width: 100%;
     height: 60px;
+    max-width: 410px;
 
     input {
       border: none;
@@ -45,6 +46,26 @@ export const StyledHeader = styled.header`
       font-weight: var(--weight-regular-2);
       font-size: var(--font-size-5);
       width: 105px;
+    }
+  }
+
+  @media (min-width: 320px) {
+    input {
+      width: 60%;
+    }
+  }
+
+  @media (min-width: 900px) {
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 95px 10px 110px;
+
+    form {
+      width: 365px;
+      :focus-within {
+        border: 2px solid var(--grey-100);
+      }
     }
   }
 `;

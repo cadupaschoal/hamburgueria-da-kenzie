@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-
-export const StyledFilterdContainer = styled.div`
+export const StyledProductsContainer = styled.div`
   height: fit-content;
   display: flex;
+  width: 100%;
   flex-direction: column;
   margin: 0 auto;
   max-width: 410px;

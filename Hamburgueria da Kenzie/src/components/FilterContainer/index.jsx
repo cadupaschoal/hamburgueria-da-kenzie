@@ -18,7 +18,7 @@ export const FilteredContainer = ({
           </span>
         </h2>
         <button
-          className="button__clear"
+          className="button__clear default__green"
           onClick={() => setFilteredProducts([])}
         >
           Limpar Busca
