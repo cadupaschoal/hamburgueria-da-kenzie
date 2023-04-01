@@ -50,7 +50,7 @@ function App() {
       }
     });
     if (newList.length === 0) {
-      toast.info('Nenhum item encontrado', {
+      toast.info('Nenhum item correspondente a pesquisa', {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
       toast.clearWaitingQueue();
